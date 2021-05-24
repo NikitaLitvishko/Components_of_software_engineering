@@ -9,10 +9,12 @@ public class TestClass
         PasswordHasher.Init("put your soul(or salt) here", 65521);
     }
 
+    // Init
+
     // 0_2_3_4_5
 
     [Fact]
-    public void ExecutionRoute_0_2_3_4_5_EverythingIsOK_CheckSameValues()
+    public void ExecutionRoute_0_2_3_4_5_CheckSameValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -42,7 +44,7 @@ public class TestClass
     }
 
     [Fact]
-    public void ExecutionRoute_0_2_3_4_5_EverythingIsOK_CheckDifferentValues()
+    public void ExecutionRoute_0_2_3_4_5_CheckDifferentValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -57,7 +59,7 @@ public class TestClass
     // 0_1_2_3_4_5
 
     [Fact]
-    public void ExecutionRoute_0_1_2_3_4_5_CatchException_CheckDifferentValues()
+    public void ExecutionRoute_0_1_2_3_4_5_CheckDifferentValues()
     {
         string pass = "لْعَرَبِيَّةُ";
         string exp = PasswordHasher.GetHash(pass);
@@ -72,7 +74,7 @@ public class TestClass
     // 0_3_5
 
     [Fact]
-    public void ExecutionRoute_0_3_5_AllSkipped_CheckSameValues()
+    public void ExecutionRoute_0_3_5_CheckSameValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -88,5 +90,56 @@ public class TestClass
         ResetPasswordHasher();
     }
 
-    // 
+    // 0_3_4_5
+
+    [Fact]
+    public void ExecutionRoute_0_3_4_5_CheckDifferentValues()
+    {
+        string pass = "passwordForLab3";
+        string exp = PasswordHasher.GetHash(pass);
+
+        PasswordHasher.Init("", 2);
+
+        Assert.NotEqual(exp, PasswordHasher.GetHash(pass));
+
+        PasswordHasher.Init(null, 2);
+
+        Assert.NotEqual(exp, PasswordHasher.GetHash(pass));
+
+        ResetPasswordHasher();
+    }
+
+    // 0_1_2_3_5
+
+    [Fact]
+    public void ExecutionRoute_0_1_2_3_5_CheckDifferentValues()
+    {
+        string pass = "لْعَرَبِيَّةُ";
+        string exp = PasswordHasher.GetHash(pass);
+
+        PasswordHasher.Init("Salt_number_1", 0);
+
+        Assert.NotEqual(exp, PasswordHasher.GetHash(pass));
+
+        ResetPasswordHasher();
+    }
+
+    // 0_2_3_5
+
+    [Fact]
+    public void ExecutionRoute_0_2_3_5_CheckDifferentValues()
+    {
+        string pass = "passwordForLab3";
+        string exp = PasswordHasher.GetHash(pass);
+
+        PasswordHasher.Init("Salt_number_1", 1);
+
+        Assert.NotEqual(exp, PasswordHasher.GetHash(pass));
+
+        ResetPasswordHasher();
+    }
+
+    // GetHash
+
+    //
 }
