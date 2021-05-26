@@ -14,7 +14,7 @@ public class TestClass
     // 0_2_3_4_5
 
     [Fact]
-    public void ExecutionRoute_0_2_3_4_5_CheckSameValues()
+    public void Init_ExecutionRoute_0_2_3_4_5_CheckSameValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -25,7 +25,7 @@ public class TestClass
     }
 
     [Fact]
-    public void ExecutionRoute_0_2_3_4_5_EverythingIsOK()
+    public void Init_ExecutionRoute_0_2_3_4_5_EverythingIsOK()
     {
         try
         {
@@ -44,7 +44,7 @@ public class TestClass
     }
 
     [Fact]
-    public void ExecutionRoute_0_2_3_4_5_CheckDifferentValues()
+    public void Init_ExecutionRoute_0_2_3_4_5_CheckDifferentValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -59,7 +59,7 @@ public class TestClass
     // 0_1_2_3_4_5
 
     [Fact]
-    public void ExecutionRoute_0_1_2_3_4_5_CheckDifferentValues()
+    public void Init_ExecutionRoute_0_1_2_3_4_5_CheckDifferentValues()
     {
         string pass = "لْعَرَبِيَّةُ";
         string exp = PasswordHasher.GetHash(pass);
@@ -74,7 +74,7 @@ public class TestClass
     // 0_3_5
 
     [Fact]
-    public void ExecutionRoute_0_3_5_CheckSameValues()
+    public void Init_ExecutionRoute_0_3_5_CheckSameValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -93,7 +93,7 @@ public class TestClass
     // 0_3_4_5
 
     [Fact]
-    public void ExecutionRoute_0_3_4_5_CheckDifferentValues()
+    public void Init_ExecutionRoute_0_3_4_5_CheckDifferentValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -112,7 +112,7 @@ public class TestClass
     // 0_1_2_3_5
 
     [Fact]
-    public void ExecutionRoute_0_1_2_3_5_CheckDifferentValues()
+    public void Init_ExecutionRoute_0_1_2_3_5_CheckDifferentValues()
     {
         string pass = "لْعَرَبِيَّةُ";
         string exp = PasswordHasher.GetHash(pass);
@@ -127,7 +127,7 @@ public class TestClass
     // 0_2_3_5
 
     [Fact]
-    public void ExecutionRoute_0_2_3_5_CheckDifferentValues()
+    public void Init_ExecutionRoute_0_2_3_5_CheckDifferentValues()
     {
         string pass = "passwordForLab3";
         string exp = PasswordHasher.GetHash(pass);
@@ -141,5 +141,33 @@ public class TestClass
 
     // GetHash
 
-    //
+    // 0_1_4
+
+    [Fact]
+    public void GetHash_ExecutionRoute_0_1_4_CheckNullValues()
+    {
+        Assert.Null(PasswordHasher.GetHash(null));
+
+        ResetPasswordHasher();
+    }
+
+    // 0_3_4
+
+    [Fact]
+    public void GetHash_ExecutionRoute_0_3_4_CheckOKValues()
+    {
+        Assert.NotNull(PasswordHasher.GetHash("passwordForLab3"));
+
+        ResetPasswordHasher();
+    }
+
+    // 0_3_4
+
+    [Fact]
+    public void GetHash_ExecutionRoute_0_2_3_4_CheckExceptionValues()
+    {
+        Assert.NotNull(PasswordHasher.GetHash("لْعَرَبِيَّةُ"));
+
+        ResetPasswordHasher();
+    }
 }
